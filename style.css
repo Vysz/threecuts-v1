@@ -1,0 +1,219 @@
+/* filename: style.css */
+
+/* 1. GLOBAL VARIABLES */
+:root {
+    --bg-color: #050505;       /* Deep Space Black */
+    --accent-color: #ff0033;   /* BLOOD RED */
+    --text-color: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+}
+
+html { scroll-behavior: smooth; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    /* This forces the footer to the bottom even on empty pages */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* Pushes footer down */
+}
+
+/* 2. NAVIGATION */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #333;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul { list-style: none; display: flex; gap: 2rem; }
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+nav a:hover, nav a.active {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-color);
+}
+
+/* 3. HERO & TEXT */
+.hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h1 { font-size: 3rem; letter-spacing: 2px; }
+
+.accent-text {
+    color: var(--accent-color);
+    text-shadow: 0 0 20px var(--accent-color);
+    font-family: 'Pinyon Script', cursive;
+    font-size: 5rem;
+    font-weight: 400;
+}
+
+.section-title {
+    text-align: center; font-size: 2rem; margin-bottom: 3rem; margin-top: 3rem;
+}
+
+/* 4. BUTTONS */
+.cyber-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 15px 50px;
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none; /* For links that look like buttons */
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.cyber-btn:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 25px var(--accent-color);
+}
+
+/* 5. CLIENT ROSTER (Linked) */
+.client-roster {
+    padding: 3rem 0;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    background: rgba(255, 0, 51, 0.03); 
+    text-align: center;
+}
+
+.roster-grid {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+/* New: Styles for clickable client names */
+.client-link {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #888;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.client-link:hover {
+    opacity: 1;
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+}
+
+/* 6. BENTO GRID (Portfolio) */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.bento-item {
+    background-color: #111;
+    border: 1px solid #333;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+a.bento-item { display: block; text-decoration: none; color: white; }
+
+.bento-item:hover {
+    transform: scale(1.02);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(255, 0, 51, 0.2);
+}
+
+.overlay {
+    position: absolute; bottom: 10px; left: 10px;
+    background: #000; color: var(--accent-color);
+    padding: 5px 15px; font-size: 0.8rem;
+    border: 1px solid var(--accent-color);
+    opacity: 0; transition: opacity 0.3s ease;
+}
+
+.bento-item:hover .overlay { opacity: 1; }
+
+@media (min-width: 768px) {
+    .large { grid-column: span 2; grid-row: span 2; height: 600px; }
+    .wide { grid-column: span 2; }
+    .tall { grid-row: span 2; height: 600px; }
+}
+
+/* 7. NEW FOOTER (Socials & Protection) */
+footer {
+    border-top: 1px solid #333;
+    background: #0a0a0a;
+    padding: 3rem 2rem;
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-socials { display: flex; gap: 20px; }
+.footer-socials a {
+    color: #666; text-decoration: none; font-size: 0.9rem; transition: color 0.3s;
+}
+.footer-socials a:hover { color: var(--accent-color); }
+
+.footer-security {
+    text-align: right;
+    font-size: 0.8rem;
+    color: #444;
+}
+
+.secure-badge {
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    padding: 2px 8px;
+    margin-right: 10px;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
